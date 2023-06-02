@@ -9,28 +9,40 @@ import java.util.function.IntBinaryOperator;
 
 public class LambdaExpression {
     public static void main(String[] args) {
-        List<Integer> valores = Arrays.asList(1,2,3,4,5,6);
-        ArrayList<Integer> dobro = new ArrayList<Integer>();
-        ArrayList<Integer> par = new ArrayList<Integer>();
-        ArrayList<Integer> impar = new ArrayList<Integer>();
 
-        valores.forEach((v)->{
-            dobro.add(v*2);
+        //SIMPLE LAMBDA FUNCTION
+        List<Integer> values = Arrays.asList(1,2,3,4,5,6);
+        ArrayList<Integer> doublee = new ArrayList<Integer>();
+        ArrayList<Integer> even = new ArrayList<Integer>();
+        ArrayList<Integer> odd = new ArrayList<Integer>();
+
+        values.forEach((v)->{
+            doublee.add(v*2);
             if(v%2==0){
-                par.add(v);
+                even.add(v);
             }else{
-                impar.add(v);
+                odd.add(v);
             }
         });
+        System.out.println(values);
+        System.out.println(doublee);
+        System.out.println(even);
+        System.out.println(odd);
 
-        //Consumer<Integer> dobrar=(v) -> { dobro.add(v*2); };
-        //valores.forEach(dobrar);
+        //USING CONSUMER
+        doublee.clear();
+        Consumer<Integer> doubleConsumer=(v) -> { doublee.add(v*2); };
+        values.forEach(doubleConsumer);
 
-        System.out.println(valores);
-        System.out.println(dobro);
-        System.out.println(par);
-        System.out.println(impar);
+        System.out.println(doublee);
+
+
+        new Thread(() -> System.out.println("Olá Mundo")).run();
+
+        //SAM - Single Abstract Method - Any interface which has at least one abastract method
+
     }
+
 
 
 }
